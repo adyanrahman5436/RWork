@@ -1,0 +1,204 @@
+---
+title: "STAT 3355 HW1"
+author: "Adyan Rahman"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Problem 1
+
+(a)
+```{r}
+x <- 8 + 9 - (7/3^(0.3))
+round (x, digits <- 2)
+
+```
+
+(b)
+```{r}
+y <- sqrt((15 + 16) / (14 + 12))
+round(log2(y), digits <- 2)
+```
+
+(c)
+```{r}
+x <- (11 + sin(pi / 4))
+y <- (factorial(3) + abs(-11))
+z <- x / y
+round(z ^ 2, digits <- 2)
+```
+
+(d)
+```{r}
+round(6 + 5 - (4/(3 ^ 2)), digits <- 2)
+```
+
+(e)
+```{r}
+x <- 14 + 13
+y <- 12 + 11
+round(exp(sqrt(x / y)), digits <- 2)
+```
+
+(f)
+```{r}
+x <- 11 + factorial(12)
+y <- factorial(13) + 14
+round((x / y) ^ 2, digits <- 2)
+```
+
+# Problem 2
+
+(a) Putting data into data vector RF
+```{r}
+RF <- c(2.60, 3.05, 3.74, 3.48, 5.49, 4.25, 2.57, 
+        2.18, 3.14, 4.82, 3.28, 3.01)
+```
+
+(b) Renaming RF to mon
+```{r}
+mon <- RF
+```
+
+(c) Average rainfall during the year
+```{r}
+round(mean(mon), digits <- 2)
+```
+
+(d) Finding months with minimum and maximum rainfall
+```{r}
+which.min(mon)
+which.max(mon)
+```
+
+# Problem 3
+
+(a) Putting data in vector HF
+```{r}
+H2 <- c(2700, 2600, 3050, 2900, 3000, 2500, 2600, 3000, 2800, 3200, 2800, 3400)
+```
+
+(b) Renaming vector to mon
+```{r}
+mon <- H2
+```
+
+(c) Total Hummers sold in 2002
+```{r}
+sum(mon)
+```
+
+(d) Finding greatest increase in decrease
+```{r}
+# Greatest increase within a month
+monthly_difference <- diff(mon)
+monthly_increase <- which.max(monthly_difference)
+greatest_increase <- monthly_increase + 1
+print(greatest_increase)
+
+# Greatest decrease within a month
+monthly_decrease <- which.min(monthly_difference)
+greatest_decrease <- monthly_decrease + 1
+print(greatest_decrease)
+```
+
+# Problem 4
+
+(a)
+```{r}
+x <- c(1, -2, 3, -4, 5, 100)
+y <- x * -1
+y[ y > 0]
+```
+
+(b)
+```{r}
+# create a sequence from 1 to 50
+z <- seq(1 : 50)
+
+# test whether an observation is even
+even <- z %% 2 == 0
+
+# subset z by the test above
+z <- z [even]
+```
+
+(c)
+```{r}
+mean <- function(x) {
+  sum(x) / length(x)
+}
+```
+
+# Problem 5
+
+Find perfect squares
+```{r}
+PrintSquare <- function() {
+  for (num in 1:1000) { 
+    if (sqrt(num) == as.integer(sqrt(num))) {
+      print(num)
+    }
+  }
+}
+
+PrintSquare()
+```
+ \newpage
+
+# Problem 6
+
+Find twin primes
+```{r}
+prime <- function(num) {
+  if (num <= 1) {
+    return(FALSE)
+  }
+  for (i in 2:(sqrt(num))) {
+    if (num %% i == 0) {
+      return(FALSE)
+    }
+  }
+  return(TRUE)
+}
+
+
+twin_primes <- function(n) {
+  twin_primes_num <- 0
+  
+  
+  for (num in 1 : (n - 2)) {
+    if (prime(num) && prime(num + 2)) {
+      twin_primes_num <- twin_primes_num + 1
+    }
+  }
+  
+  return(twin_primes_num)
+}
+
+#n <- readline(Prompt <- "Enter a number")
+#n <- as.numeric(n)
+#print(twin_primes(n))
+
+# Example Output
+n <- 50
+print(twin_primes(n))
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
